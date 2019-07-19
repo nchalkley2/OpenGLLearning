@@ -10,6 +10,7 @@ public:
 	using FunctionT = typename std::function<void(paramsT...)>;
 	using FunctionPtrT = typename std::add_pointer<void(paramsT...)>::type;
 
+	// Calls all the functions hooked to the delegate
 	void Broadcast(paramsT... params)
 	{
 		for (const auto Function : Functions)

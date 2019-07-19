@@ -2,9 +2,9 @@
 #include "engine.h"
 #include "object.h"
 
-Delegate<> Engine::OpenGLInit;
-Delegate<> Engine::OpenGLDraw;
-Delegate<> Engine::OpenGLTerminate;
+Delegate<> Engine::onOpenGLInit;
+Delegate<> Engine::onOpenGLDraw;
+Delegate<> Engine::onOpenGLTerminate;
 
 static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 static void processInput(GLFWwindow* window);
@@ -46,7 +46,7 @@ int Engine::Go()
 	}
 
 	std::cout << "Initialized OpenGL...\n";
-	OpenGLInit.Broadcast();
+	onOpenGLInit.Broadcast();
 
 	Mesh::Create();
 
@@ -62,7 +62,7 @@ int Engine::Go()
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		OpenGLDraw.Broadcast();
+		onOpenGLDraw.Broadcast();
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved, etc...)
 		// ----------------------------------------------------------------------------------
@@ -71,7 +71,7 @@ int Engine::Go()
 	}
 
 	std::cout << "Terminating OpenGL...\n";
-	OpenGLTerminate.Broadcast();
+	onOpenGLTerminate.Broadcast();
 	glfwTerminate();
 	return 0;
 }

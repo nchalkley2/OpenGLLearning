@@ -7,7 +7,7 @@ public:
 	static int Go();
 
 	// Delegates
-	static Delegate<> OpenGLInit;
-	static Delegate<> OpenGLDraw;
-	static Delegate<> OpenGLTerminate;
+	static Delegate<> onOpenGLInit;
+	static Delegate<> onOpenGLDraw;
+	static Delegate<> onOpenGLTerminate;
 };

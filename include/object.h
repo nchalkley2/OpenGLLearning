@@ -2,10 +2,14 @@
 #include <vector>
 #include <string>
 
+#include "shader.h"
+
 #pragma pack(push, 1)
-struct Pos
+struct Vert
 {
 	float x = 0.f, y = 0.f, z = 0.f;
+	float r = 1.f, g = 1.f, b = 1.f;
+	float u = 0.f, v = 1.f;
 };
 #pragma pack(pop)
 
@@ -15,13 +19,18 @@ public:
 	template <class... U>
 	static Mesh* Create(U&& ... u)
 	{
-		return Meshes.emplace_back(new Mesh(std::forward<U>(u)...)).get();
+		return meshes.emplace_back(new Mesh(std::forward<U>(u)...)).get();
+	};
+
+	template <class... U>
+	static Shader* LoadShader(U&& ... u)
+	{
+		return &shaders.emplace_back(std::forward<U>(u)...);
 	};
 
 	static void DrawMeshes();
 	static void CompileShaders();
 	static void TerminateMeshes();
-	static int ShaderProgram;
 
 public:
 	Mesh();
@@ -29,15 +38,17 @@ public:
 
 	void Draw();
 
-	int Shader;
+	Shader* shader;
 	unsigned int VBO, VAO, EBO;
 
-	std::vector<Pos> Vertices;
-	std::vector<unsigned int> Indicies;
+	std::vector<Vert> vertices;
+	std::vector<unsigned int> indicies;
 
 private:
-	static std::vector<std::unique_ptr<Mesh>> Meshes;
+	static std::vector<std::unique_ptr<Mesh>> meshes;
+	static std::vector<Shader> shaders;
 
+	// Disallow copying
 	Mesh(const Mesh&) = delete;
 	void operator=(const Mesh&) = delete;
 };
