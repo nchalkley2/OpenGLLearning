@@ -1,3 +1,6 @@
 [submodule "thirdparty/stb"]
 	path = thirdparty/stb
 	url = https://github.com/nothings/stb.git
+[submodule "thirdparty/skarupke/flat_hash_map"]
+	path = thirdparty/skarupke/flat_hash_map
+	url = https://github.com/skarupke/flat_hash_map.git
