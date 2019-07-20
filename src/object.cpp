@@ -2,8 +2,6 @@
 #include "object.h"
 #include "engine.h"
 
-#include <filesystem>
-
 std::vector<std::unique_ptr<Mesh>> Mesh::meshes;
 
 void Mesh::CompileShaders()
