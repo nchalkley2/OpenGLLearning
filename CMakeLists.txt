@@ -14,7 +14,7 @@ file(GLOB SOURCES "${SRC_DIR}/*.c*")
 # Executable definition and properties
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE "${INCLUDE_DIR}")
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 # GLFW
 set(GLFW_DIR "${THIRDPARTY_DIR}/glfw-3.3")
