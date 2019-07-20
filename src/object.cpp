@@ -5,18 +5,10 @@
 #include <filesystem>
 
 std::vector<std::unique_ptr<Mesh>> Mesh::meshes;
-<<<<<<< HEAD
 
 void Mesh::CompileShaders()
 {
 	Shader::LoadShader("shaders/defaultshader.vs", "shaders/defaultshader.fs", "default");
-=======
-std::vector<Shader> Mesh::shaders;
-
-void Mesh::CompileShaders()
-{
-	LoadShader("shaders/defaultshader.vs", "shaders/defaultshader.fs", "default");
->>>>>>> 5051886678e9e158040b94001f0bf96848d0970d
 }
 
 static AddStaticCallback CompileShadersCallback(Engine::onOpenGLInit, &Mesh::CompileShaders);
@@ -78,11 +70,7 @@ Mesh::Mesh()
 	const size_t indiciesRawSize = indicies.size() * sizeof(decltype(indicies)::value_type);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indiciesRawSize, indicies.data(), GL_STATIC_DRAW);
 
-<<<<<<< HEAD
 	shader = Shader::GetShader("default");
-=======
-	shader = &shaders[0];
->>>>>>> 5051886678e9e158040b94001f0bf96848d0970d
 }
 
 void Mesh::Draw()
