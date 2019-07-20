@@ -20,12 +20,15 @@ public:
 	static Mesh* Create(U&& ... u)
 	{
 		return meshes.emplace_back(new Mesh(std::forward<U>(u)...)).get();
+<<<<<<< HEAD
+=======
 	};
 
 	template <class... U>
 	static Shader* LoadShader(U&& ... u)
 	{
 		return &shaders.emplace_back(std::forward<U>(u)...);
+>>>>>>> 5051886678e9e158040b94001f0bf96848d0970d
 	};
 
 	static void DrawMeshes();
@@ -46,7 +49,10 @@ public:
 
 private:
 	static std::vector<std::unique_ptr<Mesh>> meshes;
+<<<<<<< HEAD
+=======
 	static std::vector<Shader> shaders;
+>>>>>>> 5051886678e9e158040b94001f0bf96848d0970d
 
 	// Disallow copying
 	Mesh(const Mesh&) = delete;

@@ -2,6 +2,11 @@
 #include "shader.h"
 #include "filesystem.h"
 
+<<<<<<< HEAD
+std::vector<std::unique_ptr<Shader>> Shader::shaders;
+
+=======
+>>>>>>> 5051886678e9e158040b94001f0bf96848d0970d
 Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath, const std::string& inName): name(inName)
 {
 	namespace FS = Filesystem;

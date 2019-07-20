@@ -34,5 +34,16 @@ target_include_directories("glad" PRIVATE "${GLAD_DIR}/include")
 target_include_directories(${PROJECT_NAME} PRIVATE "${GLAD_DIR}/include")
 target_link_libraries(${PROJECT_NAME} "glad" "${CMAKE_DL_LIBS}")
 
+<<<<<<< HEAD
+# stb
+set(STB_DIR "${THIRDPARTY_DIR}/stb")
+target_include_directories(${PROJECT_NAME} PRIVATE "${STB_DIR}/")
+
+# skarupke libs
+set(SKARUPKE_DIR "${THIRDPARTY_DIR}/skarupke")
+target_include_directories(${PROJECT_NAME} PRIVATE "${SKARUPKE_DIR}/")
+
+=======
+>>>>>>> 5051886678e9e158040b94001f0bf96848d0970d
 # shaders
 add_custom_command(TARGET ${PROJECT_NAME} PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/shaders $<TARGET_FILE_DIR:${PROJECT_NAME}>/shaders)

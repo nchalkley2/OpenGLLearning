@@ -4,6 +4,28 @@
 class Shader
 {
 public:
+<<<<<<< HEAD
+	template <class... U>
+	static Shader* LoadShader(U&& ... u)
+	{
+		return shaders.emplace_back(new Shader(std::forward<U>(u)...)).get();
+	};
+
+	static Shader* GetShader(const std::string& name)
+	{
+		for (auto& shader : shaders)
+		{
+			if (shader->name == name)
+			{
+				return shader.get();
+			}
+		}
+
+		return nullptr;
+	};
+
+=======
+>>>>>>> 5051886678e9e158040b94001f0bf96848d0970d
 	Shader(const std::string& vertexPath, const std::string& fragmentPath, const std::string& inName);
 
 	bool IsValid() const
@@ -38,4 +60,9 @@ private:
 	// shader program ID
 	int shaderProgram = -1;
 	std::string name;
+<<<<<<< HEAD
+
+	static std::vector<std::unique_ptr<Shader>> shaders;
+=======
+>>>>>>> 5051886678e9e158040b94001f0bf96848d0970d
 };

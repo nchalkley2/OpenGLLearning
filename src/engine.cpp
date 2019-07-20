@@ -1,4 +1,4 @@
-#include "project.h"
+﻿#include "project.h"
 #include "engine.h"
 #include "object.h"
 
@@ -17,7 +17,7 @@ int Engine::Go()
 
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 #ifdef __APPLE__
@@ -35,6 +35,14 @@ int Engine::Go()
 	}
 	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+	// print device info
+	//const GLubyte* vendor = glGetString(GL_VENDOR); // Returns the vendor
+	//const GLubyte* renderer = glGetString(GL_RENDERER); // Returns a hint to the model
+
+	//std::cout << "OpenGL device:\n";
+	//std::cout << "Vender: " << (const char*)vendor << "\n";
+	//std::cout << "Renderer: " << (const char*)renderer << "\n";
 
 	// glad: load all OpenGL function pointers
 	// ---------------------------------------
@@ -73,6 +81,7 @@ int Engine::Go()
 	std::cout << "Terminating OpenGL...\n";
 	onOpenGLTerminate.Broadcast();
 	glfwTerminate();
+
 	return 0;
 }
 
